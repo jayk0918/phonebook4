@@ -17,13 +17,13 @@ public class PhoneService {
 	public List<PersonVo> getPersonList(){
 		return phoneDao.getPersonList();
 	}
-	/*
-	public int personInsert(PersonVo personVo) {
-		return phoneDao.personinsert(personVo);
-	}
 	
+	public int personInsert(PersonVo personVo) {
+		return phoneDao.personInsert(personVo);
+	}
+	/*
 	public int personDelete(int personId) {
-		return phoneDao.persondelete(personId);
+		return phoneDao.personDelete(personId);
 	}
 	
 	public PersonVo getPerson(int personId) {

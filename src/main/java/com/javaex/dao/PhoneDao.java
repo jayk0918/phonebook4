@@ -11,54 +11,32 @@ import com.javaex.vo.PersonVo;
 @Repository
 public class PhoneDao {
 
-	// 필드
 	@Autowired
 	private SqlSession sqlSession;
 
-	// 메소드 - 일반
 	public List<PersonVo> getPersonList() {
-		List<PersonVo> pList = sqlSession.selectList("phonebook.selectlist");
+		List<PersonVo> pList = sqlSession.selectList("phonebook.selectList");
+		System.out.println(pList);
 		return pList;
 	}
 	
-	
+	public int personInsert(PersonVo personVo) {
+		int count = -1;
+		count = sqlSession.insert("phonebook.personInsert", personVo);
+		System.out.println(count + "건 등록되었습니다.");
+		return count;
+	}
 	/*
-	// 사람 등록(insert) 메소드
-	public int personinsert(PersonVo personVo) {
-
-		int count = 0;
-
-		getConnection();
-
-		try {
-			// 3.SQL문 시작
-			String query = "";
-			query += " insert into person";
-			query += " values (seq_person_id.nextval, ?, ?, ?)";
-			System.out.println(query);
-
-			// 바인딩
-			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, personVo.getName());
-			pstmt.setString(2, personVo.getHp());
-			pstmt.setString(3, personVo.getCompany());
-
-			// 실행
-			// 성공 횟수 리턴
-			count = pstmt.executeUpdate();
-
-			// 4. 결과처리
-			System.out.println(count + "건이 등록되었습니다.");
-
-		} catch (SQLException e) {
-			System.out.println("error: " + e);
-		}
-		close();
-
+	public int personDelete(int personId) {
+		int count = -1;
+		count = sqlSession.delete("phonebook.personDelete", personId);
+		System.out.println(count + "건 삭제되었습니다.");
 		return count;
 
 	}
-
+	
+	
+	
 	// 사람 수정(update) 메소드
 	public int personUpdate(PersonVo personVo) {
 		int count = 0;
@@ -90,37 +68,6 @@ public class PhoneDao {
 
 		} catch (SQLException e) {
 			System.out.println("error:" + e);
-		}
-		close();
-
-		return count;
-
-	}
-
-	// 사람 삭제(delete) 메소드
-	public int persondelete(int personId) {
-		int count = -1;
-
-		getConnection();
-
-		try {
-			// SQL문 준비
-			String query = "";
-			query += " delete from person ";
-			query += " where person_id = ? ";
-
-			// 바인딩
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, personId);
-
-			// 실행
-			count = pstmt.executeUpdate();
-
-			// 출력
-			System.out.println(count + "건이 삭제되었습니다.");
-
-		} catch (SQLException e) {
-			System.out.println("error: " + e);
 		}
 		close();
 

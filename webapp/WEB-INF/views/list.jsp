@@ -31,6 +31,11 @@
 				<td><a href="/phonebook4/delete/${personVo.personId },${personVo.name}">[삭제]</a></td>
 			</tr>
 		</table>
+		<br>
 	</c:forEach>
+	
+	<br>
+	
+	<a href = "/phonebook4/writeForm">등록</a>
 </body>
 </html>

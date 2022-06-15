@@ -26,15 +26,14 @@ public class PhoneDao {
 		System.out.println(count + "건 등록되었습니다.");
 		return count;
 	}
-	/*
+	
 	public int personDelete(int personId) {
 		int count = -1;
 		count = sqlSession.delete("phonebook.personDelete", personId);
 		System.out.println(count + "건 삭제되었습니다.");
 		return count;
-
 	}
-	
+	/*
 	
 	
 	// 사람 수정(update) 메소드

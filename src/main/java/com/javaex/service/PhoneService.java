@@ -21,18 +21,19 @@ public class PhoneService {
 	public int personInsert(PersonVo personVo) {
 		return phoneDao.personInsert(personVo);
 	}
-	/*
+
 	public int personDelete(int personId) {
 		return phoneDao.personDelete(personId);
+	}
+	/*
+	public int personUpdate(PersonVo personVo) {
+		return phoneDao.personUpdate(personVo);
 	}
 	
 	public PersonVo getPerson(int personId) {
 		return phoneDao.getPerson(personId);
 	}
 	
-	public int personUpdate(PersonVo personVo) {
-		return phoneDao.personUpdate(personVo);
-	}
 	*/
 	
 	

@@ -16,19 +16,19 @@
 		<table border="1">
 			<tr>
 				<td>이름(name)</td>
-				<td>${personVo.name }</td>
+				<td>${personVo.name}</td>
 			</tr>
 			<tr>
 				<td>휴대폰(hp)</td>
-				<td>${personVo.hp }</td>
+				<td>${personVo.hp}</td>
 			</tr>
 			<tr>
 				<td>회사(company)</td>
-				<td>${personVo.company }</td>
+				<td>${personVo.company}</td>
 			</tr>
 			<tr>
-				<td><a href ="/phonebook4/modifyForm/${personVo.personId }">[수정폼]</a></td>
-				<td><a href="/phonebook4/delete/${personVo.personId },${personVo.name}">[삭제]</a></td>
+				<td><a href ="/phonebook4/updateForm/${personVo.personId}">[수정폼]</a></td>
+				<td><a href="/phonebook4/delete/${personVo.personId},${personVo.name}">[삭제]</a></td>
 			</tr>
 		</table>
 		<br>

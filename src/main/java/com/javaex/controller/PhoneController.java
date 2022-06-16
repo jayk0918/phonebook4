@@ -44,17 +44,16 @@ public class PhoneController {
 		phoneService.personDelete(no);
 		return "redirect:/list";
 	}
-	/*
-	@RequestMapping(value = "/modifyForm/{no}", method = { RequestMethod.GET, RequestMethod.POST })
-	public String modifyForm(@PathVariable("no") int no, Model model) {
+	
+	@RequestMapping(value = "/updateForm/{personId}", method = { RequestMethod.GET, RequestMethod.POST })
+	public String updateForm(@PathVariable("personId") int personId, Model model) {
 
-		PersonVo personVo = phoneService.getPerson(no);
+		PersonVo personVo = phoneService.getPerson(personId);
 		model.addAttribute("personVo", personVo);
-		return "modifyForm";
+		return "updateForm";
 	}
-
-	// ===================================== 수정 =====================================
-	@RequestMapping(value = "/modify", method = { RequestMethod.GET, RequestMethod.POST })
+	
+	@RequestMapping(value = "/update", method = { RequestMethod.GET, RequestMethod.POST })
 	public String modify(@ModelAttribute PersonVo personVo) {
 		
 		System.out.println(personVo);
@@ -64,5 +63,4 @@ public class PhoneController {
 
 		return "redirect:/list";
 	}
-	*/
 }

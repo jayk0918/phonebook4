@@ -21,7 +21,6 @@
 	
 	</insert>
 	
-	
 	<delete id = "personDelete" parameterType="int">
 		<![CDATA[
 			delete person
@@ -30,5 +29,27 @@
 	
 	</delete>
 	
+	<!-- selectOne  -->
+	<select id = "getPerson" parameterType="int" resultType = "com.javaex.vo.PersonVo">
+		<![CDATA[
+			select  person_id personId
+       				,name
+        			,hp
+        			,company
+			from person
+			where person_id = #{personId}
+		]]>
+	</select>
+	
+	<update id = "personUpdate">
+		<![CDATA[
+			update person
+       		set name = #{name}
+       			,hp = #{hp}
+       			,company = #{company}
+			where person_id = #{personId}
+		]]>
+	
+	</update>
 	
 </mapper>

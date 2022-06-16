@@ -39,9 +39,9 @@ public class PhoneController {
 		return "redirect:/list";
 	}
 	
-	@RequestMapping(value = "/delete/{no},{id}", method = {RequestMethod.GET, RequestMethod.POST })
-	public String delete(@PathVariable("no") int no, @PathVariable("id") String id) {
-		phoneService.personDelete(no);
+	@RequestMapping(value = "/delete/{personId},{name}", method = {RequestMethod.GET, RequestMethod.POST })
+	public String delete(@PathVariable("personId") int personId, @PathVariable("name") String name) {
+		phoneService.personDelete(personId);
 		return "redirect:/list";
 	}
 	

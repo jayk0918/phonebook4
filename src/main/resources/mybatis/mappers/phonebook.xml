@@ -1,36 +1,63 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="phonebook">
 
-	<select id = "selectList" resultType="com.javaex.vo.PersonVo">
+<mapper namespace="phonebook">
+	
+	<resultMap id = "resultMapPersonVo" type = "com.javaex.vo.PersonVo">
+		<result column = "person_id" property = "personId"/>
+		<result column = "name" property = "name"/>
+		<result column = "hp" property = "hp"/>
+		<result column = "company" property = "company"/>
+	</resultMap>
+	
+	<select id="selectList" resultMap = "resultMapPersonVo">
 		<![CDATA[
-			select 	person_id personId,
+			select 	person_id,
 					name,
 					hp,
 					company
 			from person
-			order by personId
+			order by person_Id
 		]]>
 	</select>
+
+	<insert id="personInsert" parameterType="PersonVo">
+		<![CDATA[
+			insert into person
+			values (seq_person_id.nextval, #{name}, #{hp}, #{company})
+		]]>
+
+	</insert>
 	
-	<insert id = "personInsert" parameterType="com.javaex.vo.PersonVo">
+	<insert id = "personInsert2" parameterType="map">
 		<![CDATA[
 			insert into person
 			values (seq_person_id.nextval, #{name}, #{hp}, #{company})
 		]]>
 	
 	</insert>
-	
-	<delete id = "personDelete" parameterType="int">
+
+	<delete id="personDelete" parameterType="int">
 		<![CDATA[
 			delete person
 			where person_id = #{personId}
 		]]>
-	
+
 	</delete>
+
+	<!-- selectOne -->
+	<select id="getPerson" parameterType="int" resultMap = "resultMapPersonVo">
+		<![CDATA[
+			select  person_id
+       				,name
+        			,hp
+        			,company
+			from person
+			where person_id = #{personId}
+		]]>
+	</select>
 	
-	<!-- selectOne  -->
-	<select id = "getPerson" parameterType="int" resultType = "com.javaex.vo.PersonVo">
+	<select id="getPerson2" parameterType="int" resultType = "map">
 		<![CDATA[
 			select  person_id personId
        				,name
@@ -41,7 +68,8 @@
 		]]>
 	</select>
 	
-	<update id = "personUpdate" parameterType="com.javaex.vo.PersonVo">
+
+	<update id="personUpdate" parameterType="PersonVo">
 		<![CDATA[
 			update person
        		set name = #{name}
@@ -49,7 +77,7 @@
        			,company = #{company}
 			where person_id = #{personId}
 		]]>
-	
 	</update>
 	
+
 </mapper>
